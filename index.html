@@ -128,14 +128,14 @@
 
         <!-- Anleitung für Screenshot -->
         <h3>Schritt 2: Screenshot und E-Mail senden</h3>
-        <p>Bitte mache einen Screenshot der Ergebnisse und sende ihn an <strong>alexander.schorno@ibm.com</strong>.</p>
+        <p>Bitte mache einen Screenshot der Ergebnisse und sende ihn an <strong>deine-email@domain.com</strong>.</p>
     </div>
 
     <footer>© 2024 KI-Ethik Umfrage</footer>
 
     <script>
         const questionPool = [
-          {
+            {
                 question: "1. Was ist ein Hauptmerkmal von Software as a Service (SaaS)?",
                 options: [
                     { text: "Zugang über das Internet", value: 1 },
@@ -256,14 +256,20 @@
                 ]
             }
         ];
-
+        
         function loadRandomQuestions() {
-            const selectedQuestions = [];
-            while (selectedQuestions.length < 5) {
-                const randomIndex = Math.floor(Math.random() * questionPool.length);
-                if (!selectedQuestions.includes(randomIndex)) {
-                    selectedQuestions.push(randomIndex);
+            let selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
+            
+            // Wenn keine Fragen im Speicher sind, dann zufällig neue auswählen
+            if (!selectedQuestions) {
+                selectedQuestions = [];
+                while (selectedQuestions.length < 5) {
+                    const randomIndex = Math.floor(Math.random() * questionPool.length);
+                    if (!selectedQuestions.includes(randomIndex)) {
+                        selectedQuestions.push(randomIndex);
+                    }
                 }
+                localStorage.setItem('selectedQuestions', JSON.stringify(selectedQuestions));
             }
 
             const questionContainer = document.getElementById('questions');
@@ -284,8 +290,16 @@
         function calculateScore() {
             const form = document.getElementById('surveyForm');
             const inputs = form.getElementsByTagName('input');
+            const vorname = document.getElementById('vorname').value;
+            const nachname = document.getElementById('nachname').value;
+            const email = document.getElementById('email').value;
+
             let score = 0;
             let maxScore = 5;
+
+            // Aktuelles Datum und Uhrzeit (Timestamp)
+            const currentDate = new Date();
+            const timestamp = currentDate.toLocaleString();
 
             for (const input of inputs) {
                 if (input.type === 'radio' && input.checked) {
@@ -310,7 +324,14 @@
             }
 
             const result = document.getElementById('result');
-            result.innerHTML = `Deine Punktzahl: ${score}/${maxScore}<br>Deine Note: ${grade}`;
+            result.innerHTML = `
+                <strong>Vorname:</strong> ${vorname}<br>
+                <strong>Nachname:</strong> ${nachname}<br>
+                <strong>E-Mail:</strong> ${email}<br>
+                <strong>Datum und Uhrzeit:</strong> ${timestamp}<br><br>
+                <strong>Deine Punktzahl:</strong> ${score}/${maxScore}<br>
+                <strong>Deine Note:</strong> ${grade}
+            `;
         }
 
         // Lade zufällige Fragen, sobald die Seite geladen wird
