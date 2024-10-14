@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI-Ethik Umfrage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Umfrage: Ethische Herausforderungen und Potenziale von Künstlicher Intelligenz</h1>
+    
+    <form id="surveyForm">
+        <h2>Identifikation</h2>
+        <label for="vorname">Vorname:</label><br>
+        <input type="text" id="vorname" name="vorname" required><br><br>
+        
+        <label for="nachname">Nachname:</label><br>
+        <input type="text" id="nachname" name="nachname" required><br><br>
+        
+        <label for="email">E-Mail-Adresse:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <h2>Fragen</h2>
+        <div id="questions"></div>
+
+        <button type="button" onclick="calculateScore()">Ergebnis anzeigen</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        const questionPool = [
+            {
+                question: "1. Was ist ein Hauptmerkmal von Software as a Service (SaaS)?",
+                options: [
+                    { text: "Zugang über das Internet", value: 1 },
+                    { text: "Lokale Installation der Software", value: 0 },
+                    { text: "Einmaliger Kauf und Nutzung", value: 0 }
+                ]
+            },
+            {
+                question: "2. Welches der folgenden Beispiele ist eine SaaS-Anwendung?",
+                options: [
+                    { text: "Microsoft Office 365", value: 1 },
+                    { text: "Windows 11", value: 0 },
+                    { text: "Adobe Photoshop CS6", value: 0 }
+                ]
+            },
+            {
+                question: "3. Warum ist Ethik in der KI-Entwicklung wichtig?",
+                options: [
+                    { text: "Um gesellschaftliche Akzeptanz zu gewährleisten", value: 1 },
+                    { text: "Um die Geschwindigkeit der KI-Entwicklung zu maximieren", value: 0 },
+                    { text: "Um sicherzustellen, dass KI profitabel bleibt", value: 0 }
+                ]
+            },
+            {
+                question: "4. Was ist ein Beispiel für schwache KI (Narrow AI)?",
+                options: [
+                    { text: "Ein autonom fahrendes Auto", value: 1 },
+                    { text: "Eine KI, die verschiedene wissenschaftliche Disziplinen beherrscht", value: 0 },
+                    { text: "Ein Schachspiel-Algorithmus", value: 1 }
+                ]
+            },
+            {
+                question: "5. Welche Gefahr birgt die Verwendung von Generative KI wie ChatGPT?",
+                options: [
+                    { text: "KI könnte falsche Informationen mit hoher Überzeugung generieren", value: 1 },
+                    { text: "KI kann perfekt funktionierende Vorhersagen machen", value: 0 },
+                    { text: "KI wird nie lernen, menschenähnliche Entscheidungen zu treffen", value: 0 }
+                ]
+            },
+            {
+                question: "6. Was ist ein Vorteil von SaaS für Unternehmen?",
+                options: [
+                    { text: "Flexibilität und Skalierbarkeit", value: 1 },
+                    { text: "Höhere Wartungskosten", value: 0 },
+                    { text: "Langfristige Lizenzbindung", value: 0 }
+                ]
+            },
+            {
+                question: "7. Welche Herausforderung stellt die Gesichtserkennung durch KI dar?",
+                options: [
+                    { text: "Sie kann Datenschutzprobleme verursachen", value: 1 },
+                    { text: "Sie bietet höchste Genauigkeit", value: 0 },
+                    { text: "Sie ist nur in begrenzten Anwendungsbereichen nützlich", value: 0 }
+                ]
+            },
+            {
+                question: "8. Was ist das Ziel der IBM Ethikgrundsätze für KI?",
+                options: [
+                    { text: "Die faire und transparente Nutzung von KI sicherzustellen", value: 1 },
+                    { text: "Die KI-Entwicklung zu verlangsamen", value: 0 },
+                    { text: "Die Komplexität der KI zu erhöhen", value: 0 }
+                ]
+            },
+            {
+                question: "9. Welche Eigenschaft beschreibt 'Explainability' bei IBM's KI-Ethikgrundsätzen?",
+                options: [
+                    { text: "Die Fähigkeit, die Funktionsweise eines KI-Systems zu erklären", value: 1 },
+                    { text: "Das Potenzial, fehlerhafte Daten zu verbergen", value: 0 },
+                    { text: "Das Ziel, menschliches Verhalten zu imitieren", value: 0 }
+                ]
+            },
+            {
+                question: "10. Welche Form von KI umfasst künstliche allgemeine Intelligenz (AGI)?",
+                options: [
+                    { text: "KI mit menschenähnlicher Intelligenz und Lernfähigkeit", value: 1 },
+                    { text: "KI, die nur spezifische Aufgaben ausführt", value: 0 },
+                    { text: "KI, die keine langfristige Planung beherrscht", value: 0 }
+                ]
+            },
+            {
+                question: "11. Was ist ein potenzieller Nachteil von Large Language Models (LLMs)?",
+                options: [
+                    { text: "Sie können voreingenommene oder falsche Informationen generieren", value: 1 },
+                    { text: "Sie liefern immer 100% korrekte Informationen", value: 0 },
+                    { text: "Sie benötigen keine Daten für das Training", value: 0 }
+                ]
+            },
+            {
+                question: "12. Welche ethischen Bedenken bestehen bei der Verwendung von KI in autonomen Waffensystemen?",
+                options: [
+                    { text: "KI-Waffensysteme können ohne menschliches Eingreifen entscheiden, wann sie angreifen", value: 1 },
+                    { text: "KI-Waffensysteme sind immer unfehlbar", value: 0 },
+                    { text: "KI-Waffensysteme verbessern die Entscheidungsfindung", value: 0 }
+                ]
+            },
+            {
+                question: "13. Was ermöglicht Watsonx.governance für Unternehmen?",
+                options: [
+                    { text: "Eine verantwortungsvolle KI-Nutzung durch End-to-End-Governance", value: 1 },
+                    { text: "Eine unkontrollierte Einführung von KI-Systemen", value: 0 },
+                    { text: "Die Reduzierung der KI-Entwicklungszeit", value: 0 }
+                ]
+            },
+            {
+                question: "14. Welcher Aspekt ist in der Entwicklung von KI besonders wichtig, um ethische Probleme zu vermeiden?",
+                options: [
+                    { text: "Transparenz und Fairness", value: 1 },
+                    { text: "Maximale Automatisierung", value: 0 },
+                    { text: "Fokus auf Gewinnmaximierung", value: 0 }
+                ]
+            },
+            {
+                question: "15. Was ist eine Herausforderung bei der Integration von generativer KI in Unternehmen?",
+                options: [
+                    { text: "Mangel an interner Datenanpassung", value: 1 },
+                    { text: "Übermäßige Genauigkeit bei der Datenverarbeitung", value: 0 },
+                    { text: "Zu einfache Implementierung", value: 0 }
+                ]
+            }
+        ];
+
+        function loadRandomQuestions() {
+            const selectedQuestions = [];
+            while (selectedQuestions.length < 5) {
+                const randomIndex = Math.floor(Math.random() * questionPool.length);
+                if (!selectedQuestions.includes(randomIndex)) {
+                    selectedQuestions.push(randomIndex);
+                }
+            }
+
+            const questionContainer = document.getElementById('questions');
+            questionContainer.innerHTML = '';
+
+            selectedQuestions.forEach(index => {
+                const questionData = questionPool[index];
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `<p>${questionData.question}</p>`;
+                questionData.options.forEach((option, i) => {
+                    questionDiv.innerHTML += `<label><input type="radio" name="q${index}" value="${option.value}"> ${option.text}</label><br>`;
+                });
+                questionContainer.appendChild(questionDiv);
+            });
+        }
+
+        function calculateScore() {
+            const form = document.getElementById('surveyForm');
+            const inputs = form.getElementsByTagName('input');
+            let score = 0;
+            let maxScore = 5;
+
+            for (const input of inputs) {
+                if (input.type === 'radio' && input.checked) {
+                    score += parseInt(input.value);
+                }
+            }
+
+            // Notenberechnung
+            let grade;
+            if (score === 5) {
+                grade = "6.0 - Hervorragend";
+            } else if (score === 4) {
+                grade = "5.5 - Sehr gut";
+            } else if (score === 3) {
+                grade = "5.0 - Gut";
+            } else if (score === 2) {
+                grade = "4.5 - Befriedigend";
+            } else if (score === 1) {
+                grade = "4.0 - Genügend";
+            } else {
+                grade = "3.0 - Ungenügend";
+            }
+
+            const result = document.getElementById('result');
+            result.innerHTML = `Deine Punktzahl: ${score}/${maxScore}<br>Deine Note: ${grade}`;
+        }
+
+        // Lade zufällige Fragen, sobald die Seite geladen wird
+        window.onload = loadRandomQuestions;
+    </script>
+</body>
+</html>
