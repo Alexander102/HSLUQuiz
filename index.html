@@ -6,43 +6,136 @@
     <title>KI-Ethik Umfrage</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #5b88bd;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         .question {
             margin-bottom: 20px;
         }
+
+        .question p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        button {
+            background-color: #5b88bd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4976a8;
+        }
+
+        #thankYouMessage {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #28a745;
+        }
+
+        h3 {
+            color: #5b88bd;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Umfrage: Ethische Herausforderungen und Potenziale von Künstlicher Intelligenz</h1>
-    
-    <form id="surveyForm">
-        <h2>Identifikation</h2>
-        <label for="vorname">Vorname:</label><br>
-        <input type="text" id="vorname" name="vorname" required><br><br>
+    <div class="container">
+        <h1>Umfrage: Ethische Herausforderungen und Potenziale von Künstlicher Intelligenz</h1>
         
-        <label for="nachname">Nachname:</label><br>
-        <input type="text" id="nachname" name="nachname" required><br><br>
-        
-        <label for="email">E-Mail-Adresse:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <form id="surveyForm">
+            <h2>Identifikation</h2>
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" required>
 
-        <h2>Fragen</h2>
-        <div id="questions"></div>
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" required>
 
-        <button type="button" onclick="calculateScore()">Ergebnis anzeigen</button>
-    </form>
+            <label for="email">E-Mail-Adresse:</label>
+            <input type="email" id="email" name="email" required>
 
-    <p id="result"></p>
-    
-    <!-- Anleitung für Screenshot -->
-    <h3>Schritt 2: Screenshot und E-Mail senden</h3>
-    <p>Bitte mache einen Screenshot der Ergebnisse und sende ihn an <strong>alexander.schorno@ibm.com</strong>.</p>
-    
+            <h2>Fragen</h2>
+            <div id="questions"></div>
+
+            <button type="button" onclick="calculateScore()">Ergebnis anzeigen</button>
+        </form>
+
+        <p id="result"></p>
+
+        <!-- Anleitung für Screenshot -->
+        <h3>Schritt 2: Screenshot und E-Mail senden</h3>
+        <p>Bitte mache einen Screenshot der Ergebnisse und sende ihn an <strong>deine-email@domain.com</strong>.</p>
+    </div>
+
+    <footer>© 2024 KI-Ethik Umfrage</footer>
+
     <script>
         const questionPool = [
-            {
+          {
                 question: "1. Was ist ein Hauptmerkmal von Software as a Service (SaaS)?",
                 options: [
                     { text: "Zugang über das Internet", value: 1 },
