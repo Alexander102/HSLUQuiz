@@ -370,13 +370,6 @@
             addCountdownListener();
         }
 
-        function addCountdownListener() {
-        // Startet den Countdown nur beim ersten Klick auf eine Option
-        document.querySelectorAll('input[type="checkbox"]').forEach(input => {
-            input.addEventListener('click', startCountdown, { once: true });
-        });
-    }
-
 function calculateScore() {
     const form = document.getElementById('surveyForm');
     const inputs = form.getElementsByTagName('input');
@@ -435,48 +428,57 @@ function calculateScore() {
     `;
 }
 
-     window.onload = function() {
-        loadRandomQuestions();
+    window.onload = function() {
+    // Local Storage zurücksetzen, um sicherzustellen, dass immer 10 neue Fragen geladen werden
+    localStorage.removeItem('selectedQuestions');
+    loadRandomQuestions();
 
-        // Timer-Element erstellen und hinzufügen
-        const timerElement = document.createElement("p");
-        timerElement.id = "timer";
-        timerElement.style.fontWeight = "bold";
-        timerElement.style.fontSize = "18px";
-        timerElement.style.color = "red";
-        timerElement.textContent = "Zeit verbleibend: 10:00";
-        document.body.insertBefore(timerElement, document.body.firstChild); // Timer an den Anfang des Dokuments einfügen
-    };
+    // Timer-Element erstellen und hinzufügen
+    const timerElement = document.createElement("p");
+    timerElement.id = "timer";
+    timerElement.style.fontWeight = "bold";
+    timerElement.style.fontSize = "18px";
+    timerElement.style.color = "red";
+    timerElement.textContent = "Zeit verbleibend: 10:00";
+    document.body.insertBefore(timerElement, document.body.firstChild);
+};
 
-    let countdownStarted = false;
-    let countdownInterval;
+function addCountdownListener() {
+    // Event-Listener für den Timer auf jede Checkbox setzen
+    document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+        input.addEventListener('click', startCountdown, { once: true });
+    });
+}
 
-    function startCountdown() {
-        if (!countdownStarted) {
-            countdownStarted = true;
-            let timeLeft = 600; // 10 Minuten in Sekunden
+let countdownStarted = false;
+let countdownInterval;
 
-            countdownInterval = setInterval(function () {
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
-                document.getElementById("timer").textContent = `Zeit verbleibend: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    document.getElementById("timer").textContent = "Zeit abgelaufen!";
-                    disableQuestions();
-                }
-                timeLeft -= 1;
-            }, 1000);
-        }
+function startCountdown() {
+    if (!countdownStarted) {
+        countdownStarted = true;
+        let timeLeft = 600; // 10 Minuten in Sekunden
+
+        countdownInterval = setInterval(function () {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById("timer").textContent = `Zeit verbleibend: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("timer").textContent = "Zeit abgelaufen!";
+                disableQuestions();
+            }
+            timeLeft -= 1;
+        }, 1000);
     }
+}
 
-    function disableQuestions() {
-        const inputs = document.querySelectorAll('input[type="checkbox"]');
-        inputs.forEach(input => {
-            input.disabled = true;
-        });
-    }
+function disableQuestions() {
+    const inputs = document.querySelectorAll('input[type="checkbox"]');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+}
 </script>
 </body>
 </html>
