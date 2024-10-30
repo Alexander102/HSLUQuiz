@@ -372,7 +372,7 @@
 
         function addCountdownListener() {
         // Startet den Countdown nur beim ersten Klick auf eine Option
-        document.querySelectorAll('input[type="radio"]').forEach(input => {
+        document.querySelectorAll('input[type="checkbox"]').forEach(input => {
             input.addEventListener('click', startCountdown, { once: true });
         });
     }
@@ -472,7 +472,7 @@ function calculateScore() {
     }
 
     function disableQuestions() {
-        const inputs = document.querySelectorAll('input[type="radio"]');
+        const inputs = document.querySelectorAll('input[type="checkbox"]');
         inputs.forEach(input => {
             input.disabled = true;
         });
