@@ -135,127 +135,208 @@
 
     <script>
         const questionPool = [
-            {
-                question: "1. Was ist ein Hauptmerkmal von Software as a Service (SaaS)?",
-                options: [
-                    { text: "Zugang über das Internet", value: 1 },
-                    { text: "Lokale Installation der Software", value: 0 },
-                    { text: "Einmaliger Kauf und Nutzung", value: 0 }
-                ]
-            },
-            {
-                question: "2. Welches der folgenden Beispiele ist eine SaaS-Anwendung?",
-                options: [
-                    { text: "Microsoft Office 365", value: 1 },
-                    { text: "Windows 11", value: 0 },
-                    { text: "Adobe Photoshop CS6", value: 0 }
-                ]
-            },
-            {
-                question: "3. Warum ist Ethik in der KI-Entwicklung wichtig?",
-                options: [
-                    { text: "Um gesellschaftliche Akzeptanz zu gewährleisten", value: 1 },
-                    { text: "Um die Geschwindigkeit der KI-Entwicklung zu maximieren", value: 0 },
-                    { text: "Um sicherzustellen, dass KI profitabel bleibt", value: 0 }
-                ]
-            },
-            {
-                question: "4. Was ist ein Beispiel für schwache KI (Narrow AI)?",
-                options: [
-                    { text: "Ein autonom fahrendes Auto", value: 1 },
-                    { text: "Eine KI, die verschiedene wissenschaftliche Disziplinen beherrscht", value: 0 },
-                    { text: "Ein Schachspiel-Algorithmus", value: 1 }
-                ]
-            },
-            {
-                question: "5. Welche Gefahr birgt die Verwendung von Generative KI wie ChatGPT?",
-                options: [
-                    { text: "KI könnte falsche Informationen mit hoher Überzeugung generieren", value: 1 },
-                    { text: "KI kann perfekt funktionierende Vorhersagen machen", value: 0 },
-                    { text: "KI wird nie lernen, menschenähnliche Entscheidungen zu treffen", value: 0 }
-                ]
-            },
-            {
-                question: "6. Was ist ein Vorteil von SaaS für Unternehmen?",
-                options: [
-                    { text: "Flexibilität und Skalierbarkeit", value: 1 },
-                    { text: "Höhere Wartungskosten", value: 0 },
-                    { text: "Langfristige Lizenzbindung", value: 0 }
-                ]
-            },
-            {
-                question: "7. Welche Herausforderung stellt die Gesichtserkennung durch KI dar?",
-                options: [
-                    { text: "Sie kann Datenschutzprobleme verursachen", value: 1 },
-                    { text: "Sie bietet höchste Genauigkeit", value: 0 },
-                    { text: "Sie ist nur in begrenzten Anwendungsbereichen nützlich", value: 0 }
-                ]
-            },
-            {
-                question: "8. Was ist das Ziel der IBM Ethikgrundsätze für KI?",
-                options: [
-                    { text: "Die faire und transparente Nutzung von KI sicherzustellen", value: 1 },
-                    { text: "Die KI-Entwicklung zu verlangsamen", value: 0 },
-                    { text: "Die Komplexität der KI zu erhöhen", value: 0 }
-                ]
-            },
-            {
-                question: "9. Welche Eigenschaft beschreibt 'Explainability' bei IBM's KI-Ethikgrundsätzen?",
-                options: [
-                    { text: "Die Fähigkeit, die Funktionsweise eines KI-Systems zu erklären", value: 1 },
-                    { text: "Das Potenzial, fehlerhafte Daten zu verbergen", value: 0 },
-                    { text: "Das Ziel, menschliches Verhalten zu imitieren", value: 0 }
-                ]
-            },
-            {
-                question: "10. Welche Form von KI umfasst künstliche allgemeine Intelligenz (AGI)?",
-                options: [
-                    { text: "KI mit menschenähnlicher Intelligenz und Lernfähigkeit", value: 1 },
-                    { text: "KI, die nur spezifische Aufgaben ausführt", value: 0 },
-                    { text: "KI, die keine langfristige Planung beherrscht", value: 0 }
-                ]
-            },
-            {
-                question: "11. Was ist ein potenzieller Nachteil von Large Language Models (LLMs)?",
-                options: [
-                    { text: "Sie können voreingenommene oder falsche Informationen generieren", value: 1 },
-                    { text: "Sie liefern immer 100% korrekte Informationen", value: 0 },
-                    { text: "Sie benötigen keine Daten für das Training", value: 0 }
-                ]
-            },
-            {
-                question: "12. Welche ethischen Bedenken bestehen bei der Verwendung von KI in autonomen Waffensystemen?",
-                options: [
-                    { text: "KI-Waffensysteme können ohne menschliches Eingreifen entscheiden, wann sie angreifen", value: 1 },
-                    { text: "KI-Waffensysteme sind immer unfehlbar", value: 0 },
-                    { text: "KI-Waffensysteme verbessern die Entscheidungsfindung", value: 0 }
-                ]
-            },
-            {
-                question: "13. Was sind die Hauptvorteile von SaaS-Lösungen",
-                options: [
-                    { text: "Einfache Wartung und regelmässige Updates", value: 1 },
-                    { text: "Komplexe Installation auf jedem Gerät", value: 0 },
-                    { text: "Langsame Software-Updates", value: 0 }
-                ]
-            },
-            {
-                question: "14. Welcher Aspekt ist in der Entwicklung von KI besonders wichtig, um ethische Probleme zu vermeiden?",
-                options: [
-                    { text: "Transparenz und Fairness", value: 1 },
-                    { text: "Maximale Automatisierung", value: 0 },
-                    { text: "Fokus auf Gewinnmaximierung", value: 0 }
-                ]
-            },
-            {
-                question: "15. Was ist eine Herausforderung bei der Integration von generativer KI in Unternehmen?",
-                options: [
-                    { text: "Mangel an interner Datenanpassung", value: 1 },
-                    { text: "Übermässige Genauigkeit bei der Datenverarbeitung", value: 0 },
-                    { text: "Zu einfache Implementierung", value: 0 }
-                ]
-            }
-        ];
+    {
+        question: "Was ist ein Hauptmerkmal von Software as a Service (SaaS)?",
+        options: [
+            { text: "Zugang über das Internet", value: 1 },
+            { text: "Lokale Installation der Software", value: 0 },
+            { text: "Einmaliger Kauf und Nutzung", value: 0 }
+        ]
+    },
+    {
+        question: "Welches der folgenden Beispiele ist eine SaaS-Anwendung?",
+        options: [
+            { text: "Microsoft Office 365", value: 1 },
+            { text: "Windows 11", value: 0 },
+            { text: "Adobe Photoshop CS6", value: 0 }
+        ]
+    },
+    {
+        question: "Warum ist Ethik in der KI-Entwicklung wichtig?",
+        options: [
+            { text: "Um gesellschaftliche Akzeptanz zu gewährleisten", value: 1 },
+            { text: "Um die Geschwindigkeit der KI-Entwicklung zu maximieren", value: 0 },
+            { text: "Um sicherzustellen, dass KI profitabel bleibt", value: 0 }
+        ]
+    },
+    {
+        question: "Was ist ein Beispiel für schwache KI (Narrow AI)?",
+        options: [
+            { text: "Ein autonom fahrendes Auto", value: 1 },
+            { text: "Eine KI, die verschiedene wissenschaftliche Disziplinen beherrscht", value: 0 },
+            { text: "Ein Schachspiel-Algorithmus", value: 1 }
+        ]
+    },
+    {
+        question: "Welche Gefahr birgt die Verwendung von Generative KI wie ChatGPT?",
+        options: [
+            { text: "KI könnte falsche Informationen mit hoher Überzeugung generieren", value: 1 },
+            { text: "KI kann perfekt funktionierende Vorhersagen machen", value: 0 },
+            { text: "KI wird nie lernen, menschenähnliche Entscheidungen zu treffen", value: 0 }
+        ]
+    },
+    {
+        question: "Welche zentrale Technologie ermöglicht Cloud-Computing?",
+        options: [
+            { text: "Virtualisierung", value: 1 },
+            { text: "Supercomputer", value: 0 },
+            { text: "Massen Speichergeräte", value: 0 }
+        ]
+    },
+    {
+        question: "Welches Schlagwort beschreibt das Business Model hinter Cloud-Computing?",
+        options: [
+            { text: "Everything as a Product", value: 0 },
+            { text: "Everything as a Service", value: 1 },
+            { text: "Everything as a Plattform", value: 0 }
+        ]
+    },
+    {
+        question: "Was ist der Unterschied zwischen einer 'Public Cloud' und einer 'Private Cloud'?",
+        options: [
+            { text: "Bei einer Private Cloud wird die Infrastruktur zwischen verschiedenen Kunden geteilt. Bei einer Public Cloud steht die Cloud-Infrastruktur ausschliesslich einem Kunden zur Verfügung.", value: 0 },
+            { text: "Sowohl bei einer Private Cloud als auch einer Public Cloud wird die Cloud-Infrastruktur unter Kunden geteilt. Private Cloud ist nur ein Marketingbegriff, um für mehr Datenschutz zu werben.", value: 0 },
+            { text: "Bei einer Public Cloud wird die Infrastruktur zwischen verschiedenen Kunden geteilt. Bei einer Private Cloud steht die Cloud-Infrastruktur ausschliesslich einem Kunden zur Verfügung.", value: 1 }
+        ]
+    },
+    {
+        question: "Was ist keine Cloud Dienstleistungs-Kategorie?",
+        options: [
+            { text: "Platform as a Service", value: 0 },
+            { text: "Infrastructure as a Service", value: 0 },
+            { text: "Everything as a Service", value: 1 }
+        ]
+    },
+    {
+        question: "Wieso brauchen wir Container Orchestration Tools wie Kubernetes und nicht nur Container Management Tools wie Docker?",
+        options: [
+            { text: "Da es mit Docker zu aufwendig ist, 100 bis 10’000 von Containern gleichzeitig zu orchestrieren.", value: 1 },
+            { text: "Da Docker zu langsam ist Container zu starten.", value: 0 },
+            { text: "Da Kubernetes auch die nötigen Tools beinhaltet, Container über mehrere Server zu verteilen.", value: 1 }
+        ]
+    },
+    {
+        question: "Welche der folgenden Services gehören in die Kategorie Software as a Service?",
+        options: [
+            { text: "OneDrive, GoogleDrive, Dropbox", value: 1 },
+            { text: "Netflix, Disney+, Amazon Prime Video", value: 1 },
+            { text: "Email, Slack, WhatsApp", value: 1 }
+        ]
+    },
+    {
+        question: "Welche der folgenden Ressourcen gehören nicht zu IaaS?",
+        options: [
+            { text: "Middleware", value: 1 },
+            { text: "Network", value: 0 },
+            { text: "Storage", value: 0 }
+        ]
+    },
+    {
+        question: "Welcher Teil eines Computersystems wird nicht zwischen zwei virtuellen Maschinen geteilt, welcher sich zwei Containern teilen?",
+        options: [
+            { text: "Betriebssystem", value: 1 },
+            { text: "Hardware", value: 0 },
+            { text: "Hypervisor / Container Runtime", value: 0 }
+        ]
+    },
+    {
+        question: "Was für Vorteile soll Cloud-Computing bieten?",
+        options: [
+            { text: "Schnellere Skalierbarkeit", value: 1 },
+            { text: "Geräte Unabhängigkeit", value: 1 },
+            { text: "Besserer Schutz der Privatsphäre", value: 0 }
+        ]
+    },
+    {
+        question: "Welches der folgenden Programme ist kein Container Orchestration Programm?",
+        options: [
+            { text: "Kubernetes", value: 0 },
+            { text: "K3s", value: 0 },
+            { text: "Podman", value: 1 }
+        ]
+    },
+    {
+        question: "Was ist das Ziel der IBM Ethikgrundsätze für KI?",
+        options: [
+            { text: "Die faire und transparente Nutzung von KI sicherzustellen", value: 1 },
+            { text: "Die KI-Entwicklung zu verlangsamen", value: 0 },
+            { text: "Die Komplexität der KI zu erhöhen", value: 0 }
+        ]
+    },
+    {
+        question: "Welche Eigenschaft beschreibt 'Explainability' bei IBM's KI-Ethikgrundsätzen?",
+        options: [
+            { text: "Die Fähigkeit, die Funktionsweise eines KI-Systems zu erklären", value: 1 },
+            { text: "Das Potenzial, fehlerhafte Daten zu verbergen", value: 0 },
+            { text: "Das Ziel, menschliches Verhalten zu imitieren", value: 0 }
+        ]
+    },
+    {
+        question: "Welche Form von KI umfasst künstliche allgemeine Intelligenz (AGI)?",
+        options: [
+            { text: "KI mit menschenähnlicher Intelligenz und Lernfähigkeit", value: 1 },
+            { text: "KI, die nur spezifische Aufgaben ausführt", value: 0 },
+            { text: "KI, die keine langfristige Planung beherrscht", value: 0 }
+        ]
+    },
+    {
+        question: "Was ist ein potenzieller Nachteil von Large Language Models (LLMs)?",
+        options: [
+            { text: "Sie können voreingenommene oder falsche Informationen generieren", value: 1 },
+            { text: "Sie liefern immer 100% korrekte Informationen", value: 0 },
+            { text: "Sie benötigen keine Daten für das Training", value: 0 }
+        ]
+    },
+    {
+        question: "Welche ethischen Bedenken bestehen bei der Verwendung von KI in autonomen Waffensystemen?",
+        options: [
+            { text: "KI-Waffensysteme können ohne menschliches Eingreifen entscheiden, wann sie angreifen", value: 1 },
+            { text: "KI-Waffensysteme sind immer unfehlbar", value: 0 },
+            { text: "KI-Waffensysteme verbessern die Entscheidungsfindung", value: 0 }
+        ]
+    },
+    {
+        question: "Was sind die Hauptvorteile von SaaS-Lösungen?",
+        options: [
+            { text: "Einfache Wartung und regelmässige Updates", value: 1 },
+            { text: "Komplexe Installation auf jedem Gerät", value: 0 },
+            { text: "Langsame Software-Updates", value: 0 }
+        ]
+    },
+    {
+        question: "Welcher Aspekt ist in der Entwicklung von KI besonders wichtig, um ethische Probleme zu vermeiden?",
+        options: [
+            { text: "Transparenz und Fairness", value: 1 },
+            { text: "Maximale Automatisierung", value: 0 },
+            { text: "Fokus auf Gewinnmaximierung", value: 0 }
+        ]
+    },
+    {
+        question: "Was ist eine Herausforderung bei der Integration von generativer KI in Unternehmen?",
+        options: [
+            { text: "Mangel an interner Datenanpassung", value: 1 },
+            { text: "Übermässige Genauigkeit bei der Datenverarbeitung", value: 0 },
+            { text: "Zu einfache Implementierung", value: 0 }
+        ]
+    },
+    {
+        question: "Was ist ein Vorteil von SaaS für Unternehmen?",
+        options: [
+            { text: "Flexibilität und Skalierbarkeit", value: 1 },
+            { text: "Höhere Wartungskosten", value: 0 },
+            { text: "Langfristige Lizenzbindung", value: 0 }
+        ]
+    },
+    {
+        question: "Welche Herausforderung stellt die Gesichtserkennung durch KI dar?",
+        options: [
+            { text: "Sie kann Datenschutzprobleme verursachen", value: 1 },
+            { text: "Sie bietet höchste Genauigkeit", value: 0 },
+            { text: "Sie ist nur in begrenzten Anwendungsbereichen nützlich", value: 0 }
+        ]
+    }
+];
+
         
         function loadRandomQuestions() {
             let selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
@@ -263,7 +344,7 @@
             // Wenn keine Fragen im Speicher sind, dann zufällig neue auswählen
             if (!selectedQuestions) {
                 selectedQuestions = [];
-                while (selectedQuestions.length < 5) {
+                while (selectedQuestions.length < 10) {
                     const randomIndex = Math.floor(Math.random() * questionPool.length);
                     if (!selectedQuestions.includes(randomIndex)) {
                         selectedQuestions.push(randomIndex);
@@ -288,54 +369,104 @@
         }
 
         function calculateScore() {
-            const form = document.getElementById('surveyForm');
-            const inputs = form.getElementsByTagName('input');
-            const vorname = document.getElementById('vorname').value;
-            const nachname = document.getElementById('nachname').value;
-            const email = document.getElementById('email').value;
+    const form = document.getElementById('surveyForm');
+    const inputs = form.getElementsByTagName('input');
+    const vorname = document.getElementById('vorname').value;
+    const nachname = document.getElementById('nachname').value;
+    const email = document.getElementById('email').value;
 
-            let score = 0;
-            let maxScore = 5;
+    let score = 0;
+    let maxScore = 0;
 
-            // Aktuelles Datum und Uhrzeit (Timestamp)
-            const currentDate = new Date();
-            const timestamp = currentDate.toLocaleString();
-
-            for (const input of inputs) {
-                if (input.type === 'radio' && input.checked) {
-                    score += parseInt(input.value);
-                }
-            }
-
-            // Notenberechnung
-            let grade;
-            if (score === 5) {
-                grade = "6.0 - Hervorragend";
-            } else if (score === 4) {
-                grade = "5.5 - Sehr gut";
-            } else if (score === 3) {
-                grade = "5.0 - Gut";
-            } else if (score === 2) {
-                grade = "4.5 - Befriedigend";
-            } else if (score === 1) {
-                grade = "4.0 - Genügend";
-            } else {
-                grade = "3.0 - Ungenügend";
-            }
-
-            const result = document.getElementById('result');
-            result.innerHTML = `
-                <strong>Vorname:</strong> ${vorname}<br>
-                <strong>Nachname:</strong> ${nachname}<br>
-                <strong>E-Mail:</strong> ${email}<br>
-                <strong>Datum und Uhrzeit:</strong> ${timestamp}<br><br>
-                <strong>Deine Punktzahl:</strong> ${score}/${maxScore}<br>
-                <strong>Deine Note:</strong> ${grade}
-            `;
+    // Dynamische Berechnung der maximalen Punktzahl
+    questionPool.forEach((question, index) => {
+        const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
+        if (selectedQuestions && selectedQuestions.includes(index)) {
+            question.options.forEach(option => {
+                maxScore += option.value; // Summiere alle '1'-Werte für die maximale Punktzahl
+            });
         }
+    });
+
+    // Aktuelles Datum und Uhrzeit (Timestamp)
+    const currentDate = new Date();
+    const timestamp = currentDate.toLocaleString();
+
+    // Berechnung der erreichten Punktzahl
+    for (const input of inputs) {
+        if (input.type === 'radio' && input.checked) {
+            score += parseInt(input.value);
+        }
+    }
+
+    // Notenberechnung basierend auf maxScore
+    let grade;
+    if (score === maxScore) {
+        grade = "6.0 - Hervorragend";
+    } else if (score >= maxScore * 0.9) {
+        grade = "5.5 - Sehr gut";
+    } else if (score >= maxScore * 0.8) {
+        grade = "5.0 - Gut";
+    } else if (score >= maxScore * 0.7) {
+        grade = "4.5 - Befriedigend";
+    } else if (score >= maxScore * 0.6) {
+        grade = "4.0 - Genügend";
+    } else {
+        grade = "3.0 - Ungenügend";
+    }
+
+    const result = document.getElementById('result');
+    result.innerHTML = `
+        <strong>Vorname:</strong> ${vorname}<br>
+        <strong>Nachname:</strong> ${nachname}<br>
+        <strong>E-Mail:</strong> ${email}<br>
+        <strong>Datum und Uhrzeit:</strong> ${timestamp}<br><br>
+        <strong>Deine Punktzahl:</strong> ${score}/${maxScore}<br>
+        <strong>Deine Note:</strong> ${grade}
+    `;
+}
 
         // Lade zufällige Fragen, sobald die Seite geladen wird
         window.onload = loadRandomQuestions;
-    </script>
+   
+    <p id="timer" style="font-weight: bold; font-size: 18px; color: red;">Zeit verbleibend: 10:00</p>
+
+<script>
+    let countdownStarted = false;
+    let countdownInterval;
+
+    function startCountdown() {
+        if (!countdownStarted) {
+            countdownStarted = true;
+            let timeLeft = 600; // 10 Minuten in Sekunden
+
+            countdownInterval = setInterval(function () {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById("timer").textContent = `Zeit verbleibend: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("timer").textContent = "Zeit abgelaufen!";
+                    disableQuestions();
+                }
+                timeLeft -= 1;
+            }, 1000);
+        }
+    }
+
+    function disableQuestions() {
+        const inputs = document.querySelectorAll('input[type="radio"]');
+        inputs.forEach(input => {
+            input.disabled = true;
+        });
+    }
+
+    // Event-Listener für den ersten Klick auf eine Frage
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('click', startCountdown, { once: true });
+    });
+</script>
+    
 </body>
 </html>
