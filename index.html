@@ -362,7 +362,7 @@
                 questionDiv.className = 'question';
                 questionDiv.innerHTML = `<p>${questionData.question}</p>`;
                 questionData.options.forEach((option, i) => {
-                    questionDiv.innerHTML += `<label><input type="radio" name="q${index}" value="${option.value}"> ${option.text}</label><br>`;
+                    questionDiv.innerHTML += `<label><input type="checkbox" name="q${index}" value="${option.value}"> ${option.text}</label><br>`;
                 });
                 questionContainer.appendChild(questionDiv);
             });
