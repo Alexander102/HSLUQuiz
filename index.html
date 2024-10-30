@@ -377,37 +377,38 @@
         });
     }
 
-    function calculateScore() {
-        const form = document.getElementById('surveyForm');
-        const inputs = form.getElementsByTagName('input');
-        const vorname = document.getElementById('vorname').value;
-        const nachname = document.getElementById('nachname').value;
-        const email = document.getElementById('email').value;
+function calculateScore() {
+    const form = document.getElementById('surveyForm');
+    const inputs = form.getElementsByTagName('input');
+    const vorname = document.getElementById('vorname').value;
+    const nachname = document.getElementById('nachname').value;
+    const email = document.getElementById('email').value;
 
-        let score = 0;
-        let maxScore = 0;
+    let score = 0;
+    let maxScore = 0;
 
-        questionPool.forEach((question, index) => {
-            const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
-            if (selectedQuestions && selectedQuestions.includes(index)) {
-                question.options.forEach(option => {
-                    maxScore += option.value;
-                });
-            }
-        });
+    // Maximalpunktzahl basierend auf den richtigen Antworten berechnen
+    questionPool.forEach((question, index) => {
+        const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
+        if (selectedQuestions && selectedQuestions.includes(index)) {
+            question.options.forEach(option => {
+                maxScore += option.value;
+            });
+        }
+    });
 
     // Aktuelles Datum und Uhrzeit (Timestamp)
     const currentDate = new Date();
     const timestamp = currentDate.toLocaleString();
 
-    // Berechnung der erreichten Punktzahl
+    // Punktzahl berechnen, indem jede gewählte Checkbox als Integer gezählt wird
     for (const input of inputs) {
-        if (input.type === 'radio' && input.checked) {
-            score += parseInt(input.value);
+        if (input.type === 'checkbox' && input.checked) {
+            score += parseInt(input.value, 10); // Sicherstellen, dass der Wert als Ganzzahl interpretiert wird
         }
     }
 
-    // Notenberechnung basierend auf maxScore
+    // Notenberechnung basierend auf der maximalen Punktzahl
     let grade;
     if (score === maxScore) {
         grade = "6.0 - Hervorragend";
