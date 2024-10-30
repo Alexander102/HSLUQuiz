@@ -366,27 +366,35 @@
                 });
                 questionContainer.appendChild(questionDiv);
             });
+            // Countdown-Listener für die Antwortoptionen hinzufügen
+            addCountdownListener();
         }
 
-        function calculateScore() {
-    const form = document.getElementById('surveyForm');
-    const inputs = form.getElementsByTagName('input');
-    const vorname = document.getElementById('vorname').value;
-    const nachname = document.getElementById('nachname').value;
-    const email = document.getElementById('email').value;
+        function addCountdownListener() {
+        // Startet den Countdown nur beim ersten Klick auf eine Option
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('click', startCountdown, { once: true });
+        });
+    }
 
-    let score = 0;
-    let maxScore = 0;
+    function calculateScore() {
+        const form = document.getElementById('surveyForm');
+        const inputs = form.getElementsByTagName('input');
+        const vorname = document.getElementById('vorname').value;
+        const nachname = document.getElementById('nachname').value;
+        const email = document.getElementById('email').value;
 
-    // Dynamische Berechnung der maximalen Punktzahl
-    questionPool.forEach((question, index) => {
-        const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
-        if (selectedQuestions && selectedQuestions.includes(index)) {
-            question.options.forEach(option => {
-                maxScore += option.value; // Summiere alle '1'-Werte für die maximale Punktzahl
-            });
-        }
-    });
+        let score = 0;
+        let maxScore = 0;
+
+        questionPool.forEach((question, index) => {
+            const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions'));
+            if (selectedQuestions && selectedQuestions.includes(index)) {
+                question.options.forEach(option => {
+                    maxScore += option.value;
+                });
+            }
+        });
 
     // Aktuelles Datum und Uhrzeit (Timestamp)
     const currentDate = new Date();
@@ -426,23 +434,19 @@
     `;
 }
 
- <!-- Lade zufällige Fragen, sobald die Seite geladen wird -->
-<script>
-    window.onload = function() {
+     window.onload = function() {
         loadRandomQuestions();
 
-        // Timer-Element wird erstellt und hinzugefügt
+        // Timer-Element erstellen und hinzufügen
         const timerElement = document.createElement("p");
         timerElement.id = "timer";
         timerElement.style.fontWeight = "bold";
         timerElement.style.fontSize = "18px";
         timerElement.style.color = "red";
         timerElement.textContent = "Zeit verbleibend: 10:00";
-        document.body.insertBefore(timerElement, document.body.firstChild);
+        document.body.insertBefore(timerElement, document.body.firstChild); // Timer an den Anfang des Dokuments einfügen
     };
-</script>
 
-<script>
     let countdownStarted = false;
     let countdownInterval;
 
@@ -472,12 +476,6 @@
             input.disabled = true;
         });
     }
-
-    // Event-Listener für den ersten Klick auf eine Frage
-    document.querySelectorAll('input[type="radio"]').forEach(input => {
-        input.addEventListener('click', startCountdown, { once: true });
-    });
 </script>
-    
 </body>
 </html>
