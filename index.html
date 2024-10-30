@@ -426,10 +426,21 @@
     `;
 }
 
-        // Lade zufällige Fragen, sobald die Seite geladen wird
-        window.onload = loadRandomQuestions;
-   
-    <p id="timer" style="font-weight: bold; font-size: 18px; color: red;">Zeit verbleibend: 10:00</p>
+ <!-- Lade zufällige Fragen, sobald die Seite geladen wird -->
+<script>
+    window.onload = function() {
+        loadRandomQuestions();
+
+        // Timer-Element wird erstellt und hinzugefügt
+        const timerElement = document.createElement("p");
+        timerElement.id = "timer";
+        timerElement.style.fontWeight = "bold";
+        timerElement.style.fontSize = "18px";
+        timerElement.style.color = "red";
+        timerElement.textContent = "Zeit verbleibend: 10:00";
+        document.body.insertBefore(timerElement, document.body.firstChild);
+    };
+</script>
 
 <script>
     let countdownStarted = false;
